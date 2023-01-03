@@ -12,7 +12,6 @@ void Block::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsRectItem::mousePressEvent(event);
     qDebug()<<"Block was clicked";
-    this->setBrush(Qt::red);
 }
 
 

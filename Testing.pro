@@ -13,6 +13,11 @@ SOURCES += \
     board.cpp \
     customview.cpp \
     figures/figures.cpp \
+    figures/horse.cpp \
+    figures/king.cpp \
+    figures/pawn.cpp \
+    figures/queen.cpp \
+    figures/rook.cpp \
     game.cpp \
     main.cpp
 
@@ -21,6 +26,11 @@ HEADERS += \
     board.h \
     customview.h \
     figures/figures.h \
+    figures/horse.h \
+    figures/king.h \
+    figures/pawn.h \
+    figures/queen.h \
+    figures/rook.h \
     game.h
 
 # Default rules for deployment.
