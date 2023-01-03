@@ -1,6 +1,7 @@
 #ifndef FIGURES_H
 #define FIGURES_H
 
+#include "block.h"
 #include <QDebug>
 #include <QObject>
 #include <QGraphicsPixmapItem>
@@ -11,7 +12,7 @@ class Figures : public QObject, public QGraphicsPixmapItem{
 public:
     Figures(int x, int y, bool isWhite);
     QPoint getPosition() const;
-    bool getColor() const;
+    void setDefaultBrush(Block* block);
     virtual QVector<QPointF> getValidNeighbourPositions() = 0;
 private:
     bool isWhite;

@@ -1,6 +1,6 @@
 #include "king.h"
-#include "board.h"
-extern Board* board;
+#include <QGraphicsScene>
+
 King::King(int x, int y, bool isWhite) : Figures(x, y, isWhite)
 {
     if(isWhite)
@@ -23,12 +23,10 @@ QVector<QPointF> King::getValidNeighbourPositions()
             bool isOutsideSceneByX = neighbourPosition.x() < 0 || neighbourPosition.x() >= 8;
             bool isOutsideSceneByY = neighbourPosition.y() < 0 || neighbourPosition.y() >= 8;
 
-            // Позиция вне сцены
             if (isOutsideSceneByX || isOutsideSceneByY) {
                 continue;
             }
 
-            // Позиция равна точке объекта
             if (neighbourPosition == this->pos() / 80) {
                 continue;
             }
@@ -47,6 +45,7 @@ void King::mousePressEvent(QGraphicsSceneMouseEvent *event)
             int x = point.x();
             int y = point.y();
             board->blockArray[x][y]->setBrush(Qt::red);
+            qDebug()<<x<<y<<board->blockArray[x][y]->collidingItems();
         }
 }
 
@@ -56,7 +55,7 @@ void King::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         for (const auto& point : positions) {
             int x = point.x();
             int y = point.y();
-            board->blockArray[x][y]->setBrush(board->blockArray[x][y]->defaultBrush);
+            this->setDefaultBrush(board->blockArray[x][y]);
         }
 }
 
