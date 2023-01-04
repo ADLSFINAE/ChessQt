@@ -12,6 +12,7 @@ class Figures : public QObject, public QGraphicsPixmapItem{
 public:
     Figures(int x, int y, bool isWhite);
     QPoint getPosition() const;
+    bool getColor();
     void setDefaultBrush(Block* block);
     virtual QVector<QPointF> getValidNeighbourPositions() = 0;
 private:

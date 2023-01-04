@@ -1,6 +1,11 @@
 #include "king.h"
+#include "game.h"
+#include "pawn.h"
 #include <QGraphicsScene>
+#include <QList>
+#include <QVector>
 
+extern Game* game;
 King::King(int x, int y, bool isWhite) : Figures(x, y, isWhite)
 {
     if(isWhite)
@@ -45,8 +50,26 @@ void King::mousePressEvent(QGraphicsSceneMouseEvent *event)
             int x = point.x();
             int y = point.y();
             board->blockArray[x][y]->setBrush(Qt::red);
-            qDebug()<<x<<y<<board->blockArray[x][y]->collidingItems();
+            for(int i = 0; i < game->figuresAll.size(); i++){
+                if(game->figuresAll[i]->pos() == board->blockArray[x][y]->pos()){
+
+                    if(this->getColor() == true){
+                        if(game->figuresAll[i]->getColor() == true)
+                            board->blockArray[x][y]->setBrush(Qt::green);
+                        else
+                            board->blockArray[x][y]->setBrush(Qt::yellow);
+                    }
+
+                    else{
+                        if(game->figuresAll[i]->getColor() == true)
+                            board->blockArray[x][y]->setBrush(Qt::yellow);
+                        else
+                            board->blockArray[x][y]->setBrush(Qt::green);
+                    }
+                }
+            }
         }
+
 }
 
 void King::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)

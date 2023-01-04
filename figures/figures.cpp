@@ -14,6 +14,11 @@ QPoint Figures::getPosition() const
     return QPoint(x, y);
 }
 
+bool Figures::getColor()
+{
+    return isWhite;
+}
+
 void Figures::setDefaultBrush(Block* block)
 {
     block->setBrush(block->defaultBrush);
